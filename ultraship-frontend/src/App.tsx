@@ -1,24 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useQuery } from "@apollo/client/react";
+import { GET_EMPLOYEES } from "./queries";
+
+
+interface Employee {
+  id: string;
+  name: string;
+  class?: string;
+  attendance?: number;
+}
+
+interface GetEmployeesData {
+  employees: Employee[];
+}
+
 
 function App() {
+  const { data, loading, error } = useQuery<GetEmployeesData>(GET_EMPLOYEES, {
+    variables: { page: 1, limit: 10 },
+  });
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error</p>;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {data?.employees?.map((e: any) => (
+        <div key={e.id}>
+          {e.name} - {e.class}
+        </div>
+      ))}
     </div>
   );
 }
