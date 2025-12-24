@@ -23,7 +23,6 @@ const startServer = async () => {
     credentials: true,
     allowedHeaders: ["Content-Type", "role"],
   }));
-  app.use(express.json());
   
   // Health check / Root handler
   app.get("/", (req, res) => {
@@ -32,6 +31,7 @@ const startServer = async () => {
 
   app.use(
     "/graphql",
+    express.json(),
     expressMiddleware(server, {
       context: async ({ req }: ExpressContextFunctionArgument) => {
         const roleHeader = req.headers["role"];
