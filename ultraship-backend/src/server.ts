@@ -33,6 +33,7 @@ const startServer = async () => {
 
   app.use(
     "/graphql",
+    express.json(),
     expressMiddleware(server, {
       context: async ({ req }: ExpressContextFunctionArgument) => {
         const roleHeader = req.headers["role"];
