@@ -19,20 +19,7 @@ const startServer = async () => {
   await server.start();
 
   app.use(cors({
-    origin: (origin, callback) => {
-      const allowedOrigins = [
-        "http://localhost:3000",
-        "https://ultraship-assignment-six.vercel.app",
-        process.env.FRONTEND_URL
-      ].filter(Boolean);
-
-      if (!origin || allowedOrigins.some(o => origin.startsWith(o!))) {
-        callback(null, true);
-      } else {
-        console.log("Blocked CORS origin:", origin);
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
+    origin: true,
     credentials: true,
     allowedHeaders: ["Content-Type", "role"],
   }));
