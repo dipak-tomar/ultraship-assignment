@@ -1,0 +1,136 @@
+.employee-tile {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  position: relative;
+  border: 1px solid transparent;
+}
+
+.employee-tile:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  border-color: #3498db;
+}
+
+.tile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #6dd5fa, #2980b9);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.tile-actions {
+  position: relative;
+}
+
+.bun-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+.bun-button:hover {
+  background: #f0f2f5;
+}
+
+.bun-button span {
+  display: block;
+  width: 4px;
+  height: 4px;
+  background-color: #95a5a6;
+  border-radius: 50%;
+}
+
+.tile-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  min-width: 120px;
+  z-index: 10;
+}
+
+.tile-menu button {
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  color: #34495e;
+  font-size: 0.9rem;
+}
+
+.tile-menu button:hover {
+  background: #f7f9fa;
+}
+
+.tile-menu button.delete {
+  color: #e74c3c;
+}
+
+.tile-info h3 {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 1.2rem;
+}
+
+.role {
+  color: #7f8c8d;
+  font-size: 0.9rem;
+  margin: 4px 0 1rem;
+}
+
+.tile-stats {
+  display: flex;
+  gap: 1.5rem;
+  border-top: 1px solid #f1f2f6;
+  padding-top: 1rem;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat label {
+  font-size: 0.75rem;
+  color: #95a5a6;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat span {
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.stat span.good { color: #2ecc71; }
+.stat span.bad { color: #e74c3c; }

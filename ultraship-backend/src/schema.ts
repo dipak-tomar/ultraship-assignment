@@ -17,7 +17,14 @@ export const typeDefs = `#graphql
   }
 
   type Query {
-    employees(page: Int, limit: Int): [Employee]
+    employees(
+      page: Int
+      limit: Int
+      sortBy: String
+      sortOrder: String
+      filterName: String
+      filterClass: String
+    ): [Employee]
     employee(id: ID!): Employee
   }
 

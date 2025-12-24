@@ -8,12 +8,53 @@ export const resolvers = {
   Query: {
     employees: (
       _: unknown,
-      args: { page?: number; limit?: number },
+      args: { 
+        page?: number; 
+        limit?: number; 
+        sortBy?: string; 
+        sortOrder?: "asc" | "desc";
+        filterName?: string;
+        filterClass?: string;
+      },
       context: Context
     ): Employee[] => {
+      let filtered = [...employees];
+
+      // Filtering
+      if (args.filterName) {
+        filtered = filtered.filter(e => 
+          e.name.toLowerCase().includes(args.filterName!.toLowerCase())
+        );
+      }
+      if (args.filterClass) {
+        filtered = filtered.filter(e => e.class === args.filterClass);
+      }
+
+      // Sorting
+      if (args.sortBy) {
+        filtered.sort((a, b) => {
+          let fieldA = (a as any)[args.sortBy!] ?? "";
+          let fieldB = (b as any)[args.sortBy!] ?? "";
+
+          // Numeric comparison for ID or numeric fields
+          if (args.sortBy === 'id' || typeof fieldA === 'number') {
+            const numA = Number(fieldA);
+            const numB = Number(fieldB);
+            if (!isNaN(numA) && !isNaN(numB)) {
+              return args.sortOrder === "desc" ? numB - numA : numA - numB;
+            }
+          }
+          
+          if (fieldA < fieldB) return args.sortOrder === "desc" ? 1 : -1;
+          if (fieldA > fieldB) return args.sortOrder === "desc" ? -1 : 1;
+          return 0;
+        });
+      }
+
+      // Pagination
       const { page = 1, limit = 10 } = args;
       const start = (page - 1) * limit;
-      return employees.slice(start, start + limit);
+      return filtered.slice(start, start + limit);
     },
 
     employee: (_: unknown, args: { id: string }, context: Context): Employee | undefined => {

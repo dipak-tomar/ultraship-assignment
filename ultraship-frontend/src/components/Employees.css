@@ -1,0 +1,104 @@
+.employees-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.employees-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.employees-header h2 {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin: 0;
+}
+
+.subtitle {
+  color: #7f8c8d;
+  margin: 4px 0 0;
+}
+
+.controls {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.search-input {
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid #bdc3c7;
+  font-size: 1rem;
+  outline: none;
+  width: 250px;
+  transition: border-color 0.3s;
+}
+
+.search-input:focus {
+  border-color: #3498db;
+}
+
+.view-toggle {
+  background: #ecf0f1;
+  border-radius: 20px;
+  padding: 4px;
+  display: flex;
+  gap: 4px;
+}
+
+.toggle-btn {
+  background: transparent;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 16px;
+  cursor: pointer;
+  font-weight: 500;
+  color: #7f8c8d;
+  transition: 0.3s;
+}
+
+.toggle-btn.active {
+  background: white;
+  color: #2c3e50;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.loading, .error {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.2rem;
+}
+
+.tile-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.pagination button {
+  padding: 8px 16px;
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pagination button:disabled {
+  background: #bdc3c7;
+  cursor: not-allowed;
+}

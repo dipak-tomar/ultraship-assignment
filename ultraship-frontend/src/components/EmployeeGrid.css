@@ -1,0 +1,86 @@
+.grid-wrapper {
+  overflow-x: auto;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.employee-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1000px; /* Force scroll on small screens */
+}
+
+.employee-table th {
+  text-align: left;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  color: #7f8c8d;
+  font-weight: 600;
+  border-bottom: 2px solid #ecf0f1;
+}
+
+.employee-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #ecf0f1;
+  color: #2c3e50;
+  vertical-align: middle;
+}
+
+.employee-table tr:hover {
+  background-color: #f1f2f6;
+  cursor: pointer;
+}
+
+.font-bold {
+  font-weight: 600;
+  color: #34495e;
+}
+
+.badge {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+}
+
+.class-badge {
+  background-color: #e8f6f3;
+  color: #1abc9c;
+}
+
+.attendance-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+}
+
+.attendance-fill {
+  height: 6px;
+  border-radius: 3px;
+  min-width: 60px;
+}
+
+.status-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+
+.status-dot.active {
+  background-color: #2ecc71;
+}
+
+.action-btn {
+  border: none;
+  background: transparent;
+  font-size: 1.2rem;
+  color: #bdc3c7;
+  cursor: pointer;
+}
+
+.action-btn:hover {
+  color: #34495e;
+}
