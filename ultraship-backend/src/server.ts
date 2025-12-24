@@ -10,6 +10,8 @@ interface Context {
 }
 
 const app = express();
+app.use(express.json());
+
 const server = new ApolloServer<Context>({
   typeDefs,
   resolvers,
@@ -31,7 +33,6 @@ const startServer = async () => {
 
   app.use(
     "/graphql",
-    express.json(),
     expressMiddleware(server, {
       context: async ({ req }: ExpressContextFunctionArgument) => {
         const roleHeader = req.headers["role"];
