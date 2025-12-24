@@ -19,11 +19,30 @@ const startServer = async () => {
   await server.start();
 
   app.use(cors({
-    origin: process.env.FRONTEND_URL || "http://localhost:3000",
+    origin: (origin, callback) => {
+      const allowedOrigins = [
+        "http://localhost:3000",
+        "https://ultraship-assignment-six.vercel.app",
+        process.env.FRONTEND_URL
+      ].filter(Boolean);
+
+      if (!origin || allowedOrigins.some(o => origin.startsWith(o!))) {
+        callback(null, true);
+      } else {
+        console.log("Blocked CORS origin:", origin);
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
     allowedHeaders: ["Content-Type", "role"],
   }));
   app.use(express.json());
+  
+  // Health check / Root handler
+  app.get("/", (req, res) => {
+    res.send("UltraShip Backend is running. GraphQL is at /graphql");
+  });
+
   app.use(
     "/graphql",
     expressMiddleware(server, {
